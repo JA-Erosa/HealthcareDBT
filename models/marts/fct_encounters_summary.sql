@@ -35,7 +35,7 @@ claim_totals as (
 )
 
 select
-    e.id as encounter_id,
+    e.encounter_id as encounter_id,
     e.patient as patient_id,
     e.encounterclass as encounter_type,
     e.startdate as start_time,
@@ -48,7 +48,7 @@ select
     coalesce(total_claim_amount, 0.0) as total_claim_amount
 
 from encounters e
-left join diagnosis_counts d on e.id = d.encounter
-left join procedure_counts p on e.id = p.encounter
-left join medication_counts m on e.id = m.encounter
-left join claim_totals c on e.id = c.encounter
+left join diagnosis_counts d on e.encounter_id = d.encounter
+left join procedure_counts p on e.encounter_id = p.encounter
+left join medication_counts m on e.encounter_id = m.encounter
+left join claim_totals c on e.encounter_id = c.encounter
