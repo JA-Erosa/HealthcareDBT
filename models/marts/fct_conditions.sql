@@ -14,7 +14,8 @@ joined as (
         c.code,
         c.description,
         c.startdate as condition_start,
-        c.stopdate as condition_end
+        c.stopdate as condition_end,
+        p.deathdate
     from conditions c
     left join patients p
       on c.patient = p.patient_id
