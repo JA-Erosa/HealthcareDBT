@@ -21,3 +21,42 @@ models:
         tests: [not_null]
       - name: encounter
         description: "Can later link to encounters model"
+  - name: fct_encounters_summary
+    description: >
+      Fact table summarizing each patient encounter, enriched with counts of diagnoses, procedures, medications,
+      and total financial claim amount. Each row represents one visit.
+    columns:
+      - name: encounter_id
+        description: "Unique identifier for each encounter (visit)"
+        tests:
+          - unique
+          - not_null
+
+      - name: patient_id
+        description: "Foreign key to dim_patients.patient_id"
+        tests:
+          - not_null
+
+      - name: encounter_type
+        description: "Type of encounter (e.g., inpatient, ER, ambulatory)"
+
+      - name: start_time
+        description: "Datetime when encounter began"
+
+      - name: end_time
+        description: "Datetime when encounter ended"
+
+      - name: length_of_stay
+        description: "Duration of encounter in days"
+
+      - name: diagnosis_count
+        description: "Number of diagnosed conditions during the encounter"
+
+      - name: procedure_count
+        description: "Number of medical procedures performed"
+
+      - name: medications_count
+        description: "Number of medications prescribed or administered"
+
+      - name: total_claim_amount
+        description: "Total monetary claim value for the encounter"
