@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: raw
+    schema: raw
+    description: "Raw Synthea tables loaded into Snowflake from CSVs"
+    tables:
+      - name: patients
+        description: "Patient-level demographic data"
+      - name: encounters
+        description: "Healthcare encounters (appointments, hospital visits)"
+      - name: conditions
+        description: "Diagnosed conditions per encounter"
+      - name: medications
+      - name: procedures
+      - name: claims
+      - name: providers

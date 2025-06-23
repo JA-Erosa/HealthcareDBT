@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: dim_patients
+    description: "Dimension table for patient demographics"
+    columns:
+      - name: patient_id
+        description: "Unique ID per patient"
+        tests:
+          - unique
+          - not_null
+      - name: age
+        description: "Age based on death date or today"
+  - name: fct_conditions
+    description: "Fact table listing diagnosed conditions with links to patient and encounter"
+    columns:
+      - name: condition_id
+        tests: [unique, not_null]
+      - name: patient
+        description: "Reference to dim_patients.patient_id"
+        tests: [not_null]
+      - name: encounter
+        description: "Can later link to encounters model"
