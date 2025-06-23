@@ -17,7 +17,7 @@ models:
         description: "Patient's gender"
         tests:
           - accepted_values:
-              values: ['male', 'female', 'other', 'unknown']
+              values: ['M', 'F', 'male', 'female', 'unknown']
 
       - name: ethnicity
         description: "Self-reported ethnicity"
