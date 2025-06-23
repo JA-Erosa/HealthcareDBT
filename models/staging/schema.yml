@@ -21,3 +21,58 @@ models:
 
       - name: ethnicity
         description: "Self-reported ethnicity"
+  
+  - name: stg_procedures
+    description: "Staged procedures data from raw.procedures"
+    columns:
+      - name: procedure_id
+        description: "Unique identifier for the procedure"
+        tests:
+          - unique
+          - not_null
+
+      - name: encounter
+        description: "Foreign key to stg_encounters.id"
+        tests:
+          - not_null
+
+  - name: stg_medications
+    description: "Staged medication administration data"
+    columns:
+      - name: medication_id
+        description: "Unique identifier for medication event"
+        tests:
+          - unique
+          - not_null
+      - name: encounter
+        description: "Linked encounter ID"
+        tests:
+          - not_null
+
+  - name: stg_claims
+    description: "Staged claim records with billing and provider details"
+    columns:
+      - name: claim_id
+        tests:
+          - unique
+          - not_null
+
+      - name: patient_id
+        description: "FK to dim_patients"
+        tests:
+          - not_null
+
+      - name: provider_id
+        description: "FK to dim_providers"
+
+      - name: service_date
+        description: "Date the healthcare service was provided"
+
+      - name: outstanding
+        description: "Amount yet to be paid on the claim"
+
+      - name: healthcare_claim_type_id
+        description: "Type/category of claim submitted"
+
+      - name: status1
+        description: "Primary status field from billing system"

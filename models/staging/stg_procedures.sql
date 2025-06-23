@@ -8,6 +8,6 @@ select
     encounter,
     code,
     description,
-    start as procedure_start,
-    stop as procedure_end
+    startdate as procedure_start,
+    stopdate as procedure_end
 from source

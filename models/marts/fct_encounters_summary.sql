@@ -28,10 +28,10 @@ medication_counts as (
 
 claim_totals as (
     select
-        encounter,
-        sum(total_claim_cost) as total_claim_amount
+        appointment_id as encounter_id,
+        sum(outstanding) as total_outstanding_amount
     from {{ ref('stg_claims') }}
-    group by encounter
+    group by appointment_id
 )
 
 select
