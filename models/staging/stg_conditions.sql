@@ -3,7 +3,7 @@ with source as (
 )
 
 select
-    code as condition_id,
+    id as condition_id,
     patient,
     encounter,
     code,
