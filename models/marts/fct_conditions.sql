@@ -3,7 +3,7 @@ with conditions as (
 ),
 
 patients as (
-    select patient_id from {{ ref('dim_patients') }}
+    select patient_id, deathdate from {{ ref('dim_patients') }}
 ),
 
 joined as (
