@@ -30,3 +30,8 @@ models:
     marts:
       +schema: marts
       +materialized: table
+
+snapshots:
+  synthea_project:
+    +target_schema: snapshots
+    +strategy: check
