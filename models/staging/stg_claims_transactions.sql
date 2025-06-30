@@ -4,6 +4,7 @@ select
     cast(patientid as string) as patient_id,
     cast(type as string) as transaction_type,
     cast(amount as numeric) as transaction_amount,
-    cast(todate as date) as transaction_date
+    cast(todate as date) as todate,
+    cast(fromdate as date) as fromdate,
 
 from {{ source('raw', 'claims_transactions') }}

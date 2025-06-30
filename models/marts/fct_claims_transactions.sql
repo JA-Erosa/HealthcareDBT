@@ -14,16 +14,16 @@ joined as (
         ct.claim_id,
         cl.patient_id,
         cl.provider_id,
-        cl.encounter_id,
-        cl.payer_id,
+        cl.appointment_id as encounter_id,
+        cl.patient_id as payer_id,
         ct.transaction_type,
         ct.transaction_amount,
-        ct.transaction_date,
-        cl.service_start_date,
-        cl.service_end_date,
+        cl.last_billed_date as transaction_date,
+        ct.fromdate as service_start_date,
+        ct.todate as service_end_date,
 
         -- Duration of service
-        datediff(day, cl.service_start_date, cl.service_end_date) as service_duration_days,
+        datediff(day, ct.fromdate, ct.todate) as service_duration_days,
 
         {{ dbt_utils.generate_surrogate_key([
             'ct.claim_transaction_id'
