@@ -25,9 +25,7 @@ joined as (
         -- Duration of service
         datediff(day, ct.fromdate, ct.todate) as service_duration_days,
 
-        {{ dbt_utils.generate_surrogate_key([
-            'ct.claim_transaction_id'
-        ]) }} as claim_transaction_sk
+        {{ generate_surrogate_key_custom(['ct.claim_transaction_id']) }} as claim_transaction_sk
 
     from transactions ct
     left join claims cl on ct.claim_id = cl.claim_id
